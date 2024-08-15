@@ -1,10 +1,23 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+/* Change body theme (bg color) */
 
-.card {
-  height: 60px;
+:root {
+    --primary-black-color: #45474B;
+    --primary-white-color: #F5F7F8;
+    --secondary-color-yellowish: #F4CE14;
+    --secondary-color-greenish: #495E57;
+
+    /* Cahnge background */
+    --background-color: var(--primary-white-color);
+    --text-color: var(--primary-black-color);
 }
+  
+.dark-theme {
+    --background-color: var(--primary-black-color);
+    --text-color: var(--primary-white-color);
+}
+  
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+  
