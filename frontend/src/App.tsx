@@ -12,12 +12,12 @@ function App() {
     <>
       <Router>
           <Header/>
-          <main className="min-h-screen my-32 ">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/add-note" element={<AddNote />} />
-            </Routes>
-          </main>
+            <main className="min-h-screen my-32 ">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/add-note" element={<AddNote />} />
+              </Routes>
+            </main>
           <Footer/>
       </Router>
       
