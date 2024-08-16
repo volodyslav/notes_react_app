@@ -11,7 +11,7 @@ const ButtonToggle = () => {
     }, [theme])
 
     return (
-        <button onClick={toggleTheme} className={`md:text-5xl text-3xl p-4 hover:scale-125  duration-500 ease-in-out `}>
+        <button title="toggle button" onClick={toggleTheme} className={`md:text-5xl text-3xl p-4 hover:scale-125  duration-500 ease-in-out `}>
             {theme === "light" ? <MdLightMode/> : <MdDarkMode/>}
         </button>  
     )

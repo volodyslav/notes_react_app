@@ -19,11 +19,11 @@ const Home = () => {
   }, [loading])
 
   return (
-    <div className="grid lg:grid-col-3 gap-10 md:grid-col-2 grid-col-1 justify-center mx-auto">
+    <div className=" flex  justify-center mx-20">
       {loading && <ButtonLoading />}
-      {!loading && notes && notes.data.map(note => (
+      <div className="grid  lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1 ">{!loading && notes && notes.data.map(note => (
         <NoteGrid key={note.data.id} note={note.data} />
-      ))}
+      ))}</div>
       {!loading && !notes && <div>Please add new notes</div>}
     </div>
   )
