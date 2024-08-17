@@ -27,7 +27,7 @@ const Home = () => {
   }, [loading])
 
   return (
-    <div className=" flex  justify-center mx-20">
+    <div className=" flex  justify-center md:mx-10 mx-2">
       {loading && <ButtonLoading />}
       <div className="grid  lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1 ">{!loading && notes && notes.data.map(note => (
         <NoteGrid key={note.data.id} note={note.data} onDeleteNote={onDeleteNote} />
