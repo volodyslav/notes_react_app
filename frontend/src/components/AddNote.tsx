@@ -7,10 +7,7 @@ const AddNote = () => {
     // Initial values
     const [title, setTitle] = useState("");
     const [text, setText] = useState("");
-    const [endDate, setEndDate] = useState(() => {
-        const today = new Date();
-        return today.toISOString().split('T')[0]; // Format as YYYY-MM-DD
-      });
+    const [endDate, setEndDate] = useState("");
 
     // Success message or error message
     const [success,setSuccess] = useState(false);

@@ -10,6 +10,14 @@ const Home = () => {
   const collection = useCollection<NoteType>("notes");
   const notes = useQuery(collection.query());
 
+  // Delete a note
+  const onDeleteNote  = (id: string) => {
+    const noteFind = notes.data.find(note => note.data.id === id);
+    if (noteFind){
+      noteFind.delete();
+    }
+  }
+
   // unset loading
   useEffect(() => {
     const timeout = setTimeout(() =>{
@@ -22,7 +30,7 @@ const Home = () => {
     <div className=" flex  justify-center mx-20">
       {loading && <ButtonLoading />}
       <div className="grid  lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1 ">{!loading && notes && notes.data.map(note => (
-        <NoteGrid key={note.data.id} note={note.data} />
+        <NoteGrid key={note.data.id} note={note.data} onDeleteNote={onDeleteNote} />
       ))}</div>
       {!loading && !notes && <div>Please add new notes</div>}
     </div>
