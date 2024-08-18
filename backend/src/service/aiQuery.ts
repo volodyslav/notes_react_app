@@ -8,12 +8,7 @@ export class ExampleService extends SquidService {
   
   @executable()
   async askQuestion(question: string): Promise<string> {
-    const responce = await this.squid.ai().executeAiQuery("build_in_db", question);
-    console.log(`
-      Question: ${question}
-      Query: ${responce.executedQuery ?? 'No query executed'}
-      Explanation: ${responce.explanation ?? 'No Explanation'}`)
-
+    const responce = await this.squid.ai().executeAiQuery('built_in_db', question);
     return responce.answer;
   }
 }

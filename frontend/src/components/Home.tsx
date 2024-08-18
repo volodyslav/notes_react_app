@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { NoteType } from "../types/note"
 import NoteGrid from "./home-utils/NoteGrid"
 import { useCollection, useQuery } from "@squidcloud/react"
-import ButtonLoading from "./home-utils/ButtonLoading"
+import ButtonLoading from "../utils/ButtonLoading"
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <div className=" flex  justify-center md:mx-10 mx-2">
-      {loading && <ButtonLoading />}
+      {loading && <ButtonLoading text="Loading..."/>}
       <div className="grid  lg:grid-cols-3 gap-10 md:grid-cols-2 grid-cols-1 ">{!loading && notes && notes.data.map(note => (
         <NoteGrid key={note.data.id} note={note.data} onDeleteNote={onDeleteNote} />
       ))}</div>
