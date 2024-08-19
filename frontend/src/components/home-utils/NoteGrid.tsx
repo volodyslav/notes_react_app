@@ -1,6 +1,6 @@
 import { NoteType } from '../../types/note'
 import NoteGridShow from './NoteGridShow';
-
+import NoteGridEdit from './NoteGridEdit';
 import { useEffect, useState } from 'react';
 
 type NoteGridType = {
@@ -14,6 +14,15 @@ const NoteGrid = ({note, onDeleteNote}: NoteGridType) => {
   const [noteDelete, setNoteDelete] = useState(false);
   const [noteEdit, setNoteEdit] = useState(false);
 
+  // Check edit mode
+  const handleEditNote = () => {
+    setNoteEdit(true);
+  }
+  const handleSaveNote = () => {
+    setNoteEdit(false);
+  }
+
+  // Check delete mode
   const handleDeleteNoteTrue = () => {
     setNoteDelete(true);
   }
@@ -35,7 +44,8 @@ const NoteGrid = ({note, onDeleteNote}: NoteGridType) => {
   
   return (
     <>
-      {!noteEdit && <NoteGridShow handleDeleteNoteFalse={handleDeleteNoteFalse} handleDeleteNoteTrue={handleDeleteNoteTrue} note={note} noteDelete={noteDelete} onDeleteNote={onDeleteNote}/>}
+      {!noteEdit && <NoteGridShow handleDeleteNoteFalse={handleDeleteNoteFalse} handleDeleteNoteTrue={handleDeleteNoteTrue} note={note} noteDelete={noteDelete} onDeleteNote={onDeleteNote} handleEditNote={handleEditNote}/>}
+      {noteEdit && <NoteGridEdit note={note} handleSaveNote={handleSaveNote}/>}
     </>
   )
 }
