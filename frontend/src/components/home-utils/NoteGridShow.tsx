@@ -3,18 +3,24 @@ import { TiDelete } from "react-icons/ti";
 import { NoteType } from '../../types/note';
 import { useTheme } from '../../providers/ThemeProvider'
 import { MdEdit } from "react-icons/md";
+import { useNotes } from '../../providers/NoteProvider';
+import { FaCheck } from "react-icons/fa";
 
 type NoteGridShowType = {
     note: NoteType;
     noteDelete: boolean;
     handleDeleteNoteFalse: () => void;
     handleDeleteNoteTrue: () => void;
-    onDeleteNote: (id: string) => void;
     handleEditNote: () => void;
 }
 
-const NoteGridShow = ({note, noteDelete, handleDeleteNoteFalse, handleDeleteNoteTrue, onDeleteNote, handleEditNote}: NoteGridShowType) => {
+const NoteGridShow = ({note, noteDelete, handleDeleteNoteFalse, handleDeleteNoteTrue, handleEditNote}: NoteGridShowType) => {
     const { theme } = useTheme()
+    const { deleteNote } = useNotes()
+
+    const onDeleteNote = async (id: string) => {
+        await deleteNote(id);
+    }
   
     return (
       <div className={`relative h-fit  p-10 shadow-2xl space-y-4 duration-300 ease-in-out rounded-xl ${theme === "dark" ? "bg-secondary text-success" : "bg-success text-secondary"}`}>
@@ -41,7 +47,7 @@ const NoteGridShow = ({note, noteDelete, handleDeleteNoteFalse, handleDeleteNote
             <p>End date: {format(note.end_date, "PPP")}</p>
           </div>
           <div >
-              <p className={`ms-2 ${theme === "dark" ? "bg-secondary text-success" : "bg-success text-secondary"}`}>{note.is_done ? "Done" : "Still active"}</p>
+              <p className={`flex items-center space-x-4 ms-2 ${theme === "dark" ? "bg-secondary text-success" : "bg-success text-secondary"}`}>{note.is_done ? `Done` : "Still active"} {note.is_done ? <FaCheck className='mx-2'/> : ""}</p>
           </div>
         </div>
       </div>

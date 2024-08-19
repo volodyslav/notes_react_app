@@ -3,6 +3,7 @@ import App from './App.tsx';
 import { SquidContextProvider } from '@squidcloud/react';
 import './index.css';
 import { ThemeProvider } from './providers/ThemeProvider.tsx';
+import { NoteProvider } from './providers/NoteProvider.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <SquidContextProvider
@@ -14,7 +15,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     }}
   >
     <ThemeProvider>
-      <App />
+      <NoteProvider>
+        <App />
+      </NoteProvider>
     </ThemeProvider>
   
   </SquidContextProvider>,

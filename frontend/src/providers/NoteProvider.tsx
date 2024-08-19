@@ -17,7 +17,7 @@ const NoteContext = createContext<NoteContextType>({
 
 export const NoteProvider: React.FC<{ children: React.ReactNode}> = ({ children }) => {
     const noteCollection = useCollection<NoteType>("notes");
-    const { data: notes} = useQuery(noteCollection.query());
+    const { data: notes} = useQuery(noteCollection.query().dereference());
 
     const addNote = async (title: string, text: string, endDate: string) => {
         try {
@@ -38,13 +38,7 @@ export const NoteProvider: React.FC<{ children: React.ReactNode}> = ({ children 
 
     const updateNote = async (note: NoteType) => {
         try {
-            await noteCollection.doc(note.id).update({
-                title: note.title,
-                text: note.text,
-                end_date: note.end_date,
-                is_done: note.is_done,
-                sub_notes: note.sub_notes,
-              });
+            await noteCollection.doc(note.id).update(note);
         } catch (error) {
           console.error('Failed to update note', error);
         }

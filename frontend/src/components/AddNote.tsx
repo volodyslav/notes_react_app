@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { NoteType } from "../types/note"
-import { useCollection } from "@squidcloud/react";
+
 import { useTheme } from "../providers/ThemeProvider";
+import { useNotes } from "../providers/NoteProvider";
 
 const AddNote = () => {
     // Initial values
@@ -16,22 +16,16 @@ const AddNote = () => {
     // Theme
     const { theme } = useTheme();
 
+    // Notes 
+    const { addNote } = useNotes();
+
     // Notes db
-    const noteCollection = useCollection<NoteType>("notes");
+    //const noteCollection = useCollection<NoteType>("notes");
 
     // Add a note
     const onAddNote = () => {
         try{
-            const noteId = crypto.randomUUID();
-            noteCollection.doc(noteId).insert({
-                id: noteId,
-                title,
-                text,
-                end_date: new Date(endDate),
-                date_added: new Date(new Date().toISOString().split('T')[0]),
-                is_done: false,
-                sub_notes: []
-            })
+            addNote(title, text, endDate);
             // If add is successful
             setSuccess(true);
         }catch(e){

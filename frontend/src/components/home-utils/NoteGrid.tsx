@@ -5,10 +5,9 @@ import { useEffect, useState } from 'react';
 
 type NoteGridType = {
   note: NoteType;
-  onDeleteNote: (id: string) => void;
 }
 
-const NoteGrid = ({note, onDeleteNote}: NoteGridType) => {
+const NoteGrid = ({note}: NoteGridType) => {
 
   // Check delete mode
   const [noteDelete, setNoteDelete] = useState(false);
@@ -18,10 +17,7 @@ const NoteGrid = ({note, onDeleteNote}: NoteGridType) => {
   const handleEditNote = () => {
     setNoteEdit(true);
   }
-  const handleSaveNote = () => {
-    setNoteEdit(false);
-  }
-
+  
   // Check delete mode
   const handleDeleteNoteTrue = () => {
     setNoteDelete(true);
@@ -44,8 +40,8 @@ const NoteGrid = ({note, onDeleteNote}: NoteGridType) => {
   
   return (
     <>
-      {!noteEdit && <NoteGridShow handleDeleteNoteFalse={handleDeleteNoteFalse} handleDeleteNoteTrue={handleDeleteNoteTrue} note={note} noteDelete={noteDelete} onDeleteNote={onDeleteNote} handleEditNote={handleEditNote}/>}
-      {noteEdit && <NoteGridEdit note={note} handleSaveNote={handleSaveNote}/>}
+      {!noteEdit && <NoteGridShow handleDeleteNoteFalse={handleDeleteNoteFalse} handleDeleteNoteTrue={handleDeleteNoteTrue} note={note} noteDelete={noteDelete}  handleEditNote={handleEditNote}/>}
+      {noteEdit && <NoteGridEdit note={note} setNoteEdit={setNoteEdit}/>}
     </>
   )
 }
