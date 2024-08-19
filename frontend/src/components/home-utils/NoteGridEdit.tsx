@@ -1,6 +1,6 @@
 import { useTheme } from "../../providers/ThemeProvider"
 import { NoteType } from "../../types/note";
-import { format } from "date-fns";
+import { AiOutlineCloseSquare } from "react-icons/ai";
 import { FaRegSave } from "react-icons/fa";
 import { useNotes } from "../../providers/NoteProvider";
 import { useState } from "react";
@@ -32,21 +32,27 @@ const NoteGridEdit = ({note, setNoteEdit}: NoteEditType) => {
         setNoteEdit(false);
     }
 
+    // Close the note editor
+    const handleCloseEditor = () => {
+        setNoteEdit(false);
+    }
+
   return (
         <div className={`relative h-fit  p-10 shadow-2xl space-y-4 duration-300 ease-in-out rounded-xl ${theme === "dark" ? "bg-secondary text-success" : "bg-success text-secondary"}`}>
-            <div className=' absolute right-3 top-1 items-center flex'>
-                <button onClick={() => handleUpdateNote(note.id)} title="save button" className="md:text-4xl text-xl hover:scale-105 duration-500 ease-in-out"><FaRegSave/></button>
+            <div className=' absolute right-2 top-4  items-center flex'>
+                <button  onClick={() => handleUpdateNote(note.id)} title="save button" className="md:text-3xl text-xl hover:scale-105 duration-500 ease-in-out"><FaRegSave/></button>
+                <button onClick={handleCloseEditor} title="close editor" className="md:text-3xl text-xl hover:scale-105 duration-500  ease-in-out"><AiOutlineCloseSquare /></button>
             </div>
 
-            <input className='md:text-5xl text-2xl w-full rounded-lg p-2' onChange={(e) => setTitleEdit(e.target.value)} value={note.title}/>
-            <textarea className='md:text-2xl text-xl resize-none w-full p-2 rounded-lg' onChange={(e) => setTextEdit(e.target.value)}>{note.text}</textarea>
+            <input className='md:text-3xl text-xl w-full rounded-lg p-2' onChange={(e) => setTitleEdit(e.target.value)} value={note.title}/>
+            <textarea className='md:text-3xl text-xl resize-none w-full p-2 rounded-lg' onChange={(e) => setTextEdit(e.target.value)}>{note.text}</textarea>
             <div className='flex justify-between items-center'> 
                 <div>
-                    <input type="date" />
+                    <input type="date" onChange={(e) => setEndDateEdit(new Date(e.target.value))} className=" rounded-xl p-2" value={endDateEdit.toISOString().substring(0, 10)}  />
                 </div>
                 <div className="flex items-center space-x-2">
                     <label htmlFor="default-checkbox" className={`${theme === "dark" ? "bg-secondary text-success" : "bg-success text-secondary"}`}>Done</label>
-                    <input id="default-checkbox" type="checkbox" onChange={() => setIsDoneEdit(!isDoneEdit)} className={`w-4 h-4 rounded  f${theme === "dark" ? "bg-secondary text-success" : "bg-success text-secondary"} `} />
+                    <input id="default-checkbox" type="checkbox" onChange={() => setIsDoneEdit(!isDoneEdit)} className={`  w-4 h-4 rounded-xl  f${theme === "dark" ? "bg-secondary text-success" : "bg-success text-secondary"} `} />
                     
                 </div>
             </div>
