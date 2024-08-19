@@ -5,4 +5,5 @@ export type NoteType = {
     is_done: boolean;
     title: string;
     text: string;
+    sub_notes: string[];
 }

@@ -30,6 +30,7 @@ const AddNote = () => {
                 end_date: new Date(endDate),
                 date_added: new Date(new Date().toISOString().split('T')[0]),
                 is_done: false,
+                sub_notes: []
             })
             // If add is successful
             setSuccess(true);

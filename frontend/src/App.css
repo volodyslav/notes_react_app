@@ -26,11 +26,17 @@ body {
 }
 
 .chat-bot{
+    
     animation: chatBot 1s ease-in-out forwards;
 }
 
 .chat-bot-close {
-    animation: chatBotClose 0.5s ease-in forwards;
+    
+    animation: chatBotClose 0.3s ease-in forwards;
+}
+
+.chat {
+    visibility: hidden;
 }
 
 @keyframes chatBot {
