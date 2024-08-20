@@ -1,3 +1,9 @@
+
+![capture_240820_180550](https://github.com/user-attachments/assets/07a8eece-66bc-4632-828f-a52edd7b271d)
+
+![capture_240820_180616](https://github.com/user-attachments/assets/45a1c6a8-7957-431c-8e22-bfd384322d52)
+
+
 # Getting started with Squid Cloud: A basic starter project
 
 This template provides a minimal setup for a [Squid Cloud](https://squid.cloud)-powered application based on the [Vite](https://vitejs.dev/) counter sample application.
